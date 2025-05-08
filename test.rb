@@ -42,7 +42,7 @@ end
 
 class BugTest < Minitest::Test
   def test_redis_subscribe
-    redis = Redis.new(url: 'rediss://localhost:6379', ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE })
+    redis = Redis.new
     redis.subscribe('supply-side-platform.events') do
       it.message do
         Post.exists?(id: rand(2_000_000_000))
